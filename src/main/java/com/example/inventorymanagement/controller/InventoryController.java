@@ -27,8 +27,8 @@ public class InventoryController {
     }
 
     @PutMapping("/{id}/deliver")
-    public InventoryDto updateInventoryStatus(@PathVariable Long id) {
-        return inventoryService.updateInventoryStatus(Math.toIntExact(id));
+    public InventoryDto updateInventoryStatus(@PathVariable int id) {
+        return inventoryService.updateInventoryStatus(id);
     }
 
 

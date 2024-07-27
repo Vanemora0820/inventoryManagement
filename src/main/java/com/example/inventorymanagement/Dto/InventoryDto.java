@@ -12,5 +12,7 @@ public class InventoryDto {
     private int productId;
     private int quantity;
     private String status;
+    private String serialNumber;
+    private int userId;
 
 }
