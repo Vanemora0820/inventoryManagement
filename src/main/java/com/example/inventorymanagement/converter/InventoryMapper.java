@@ -14,10 +14,12 @@ public class InventoryMapper {
         InventoryDto inventoryDto = new InventoryDto();
         inventoryDto.setId(inventory.getId());
         inventoryDto.setProductId(inventory.getProduct() != null ? inventory.getProduct().getId() : null);
+        inventoryDto.setProductName(inventory.getProduct().getName());
         inventoryDto.setQuantity(inventory.getQuantity());
         inventoryDto.setStatus(inventory.getStatus());
         inventoryDto.setSerialNumber(inventory.getSerialNumber());
         inventoryDto.setUserId(inventory.getUser() != null ? inventory.getUser().getId() : null);
+        inventoryDto.setDate(inventory.getDate());
         return inventoryDto;
     }
 
@@ -29,6 +31,7 @@ public class InventoryMapper {
         inventory.setStatus(inventoryDto.getStatus());
         inventory.setSerialNumber(inventoryDto.getSerialNumber());
         inventory.setUser(user);
+        inventory.setDate(inventoryDto.getDate());
         return inventory;
     }
 

@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,6 +23,7 @@ public class Inventory {
     private int quantity;
     private String status;
     private String serialNumber;
+    private LocalDate date;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

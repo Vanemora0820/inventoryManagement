@@ -37,12 +37,15 @@ public class InventoryServiceImpl  implements InventoryService {
 
     @Override
     public InventoryDto addInventory(InventoryDto inventoryDto) {
-        User user = userRepository.findById(inventoryDto.getUserId()).get();
-        Product product = productRepository.findById((long) inventoryDto.getProductId()).orElseThrow();
+        User user = userRepository.findById(inventoryDto.getUserId())
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + inventoryDto.getUserId()));
+        Product product = productRepository.findById((long) inventoryDto.getProductId())
+                .orElseThrow(() -> new RuntimeException("Product not found with id: " + inventoryDto.getProductId()));
         Inventory inventory = InventoryMapper.inventory(inventoryDto, user, product);
         Inventory savedInventory = inventoryRepository.save(inventory);
         return InventoryMapper.inventoryDto(savedInventory);
     }
+
 
     @Override
     public InventoryDto updateInventoryStatus(int id) {
